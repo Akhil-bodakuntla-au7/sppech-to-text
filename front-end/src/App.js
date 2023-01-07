@@ -9,7 +9,7 @@ class App extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = { isRecording:false,note:"",covid: [] };
+    this.state = { isRecording:false,note:"" };
   }
 
   recognizerCallback = (s, e) => {

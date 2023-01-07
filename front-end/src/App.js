@@ -11,9 +11,7 @@ class App extends React.Component {
     super(props);
     this.state = { isRecording:false,note:"",covid: [] };
   }
-  componentDidUpdate(){
-    // this.startRecordController();
-  }
+
   recognizerCallback = (s, e) => {
     console.log(e.result.text);
     const reason = ResultReason[e.result.reason];
@@ -75,7 +73,7 @@ class App extends React.Component {
           // this.stopRecognizer.bind(this)
           this.sppech_recognizer.close()
           this.sppech_recognizer = undefined
-          console.log('stopped')
+          console.log('stoped')
           console.error(err)
         }
       )
@@ -83,34 +81,7 @@ class App extends React.Component {
       // alert("stopped")
     }
   }
-
-  componentDidMount() {
-
-
-    // navigator.geolocation.getCurrentPosition(function(position) {
-    //   console.log(position);
-    //   console.log("Latitude is :", position.coords.latitude);
-    //   console.log("Longitude is :", position.coords.longitude);
-    // });
-    // fetch("http://20.115.41.101:4000/get_today_positive_stat")
-    //   .then(res => res.json())
-    //   .then(
-    //     (result) => {
-    //       this.setState({
-    //         isLoaded: true,
-    //         covid: result['response']
-    //       });
-    //     },
-
-    //     (error) => {
-    //       this.setState({
-    //         isLoaded: true,
-    //         error
-    //       });
-    //     }
-    //   )
-
-  }
+  
   render() {
     const {isRecording,note} = this.state;
     return (
@@ -118,23 +89,15 @@ class App extends React.Component {
        <h1>Speech To Text</h1>
        <div>
          <div className="noteContainer">
-           {/* <h2>Record Note Here</h2> */}
-           {isRecording ? <span>Recording... </span> : <span>Stopped </span>}
-           {/* <button className="button" onClick={storeNote} disabled={!note}>
-             Save
-           </button> */}
-          
+           {isRecording ? <span>Recording... </span> : <span>Stopped </span>}          
            <p>{note}</p>
          </div>
          <button onClick={() => {this.setState({isRecording:!isRecording},()=>this.startRecordController())}}>
              Start/Stop
            </button>
-         {/* <div className="noteContainer">
-           <h2>Notes Store</h2>
-         </div> */}
        </div>
      </>
     );
   }
 }
-export default App;
+export default App ;

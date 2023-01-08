@@ -9,7 +9,7 @@ class App extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = { isRecording:false,note:"" };
+    this.state = { isRecording:false,note:""};
   }
 
   recognizerCallback = (s, e) => {
@@ -53,9 +53,10 @@ class App extends React.Component {
       <div>
        <h1>Speech To Text</h1>
        <div>
-         <div className="noteContainer">
-           {isRecording ? <span>Recording... </span> : <span>Stopped </span>}          
-           <p>{note}</p>
+         <div>
+           {isRecording ? <span>Recording... </span> : <span>Stopped </span>}       
+           <br/>   
+           <textarea style={{width:"98%"}} rows={20} name="speech" cols={120} value={note} onChange={e=> this.setState({note:e.target.value})} />
          </div>
          <button onClick={() => {this.setState({isRecording:!isRecording},()=>this.startRecordController())}}>
              Start/Stop

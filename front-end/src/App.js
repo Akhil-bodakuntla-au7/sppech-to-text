@@ -32,7 +32,7 @@ class App extends React.Component {
       sppech_recognizer.recognized = this.recognizerCallback.bind(this);
       sppech_recognizer.startContinuousRecognitionAsync()
     } else {
-      console.log("stop called")
+      console.log("stopped")
       sppech_recognizer.stopContinuousRecognitionAsync(
         () => {
           this.sppech_recognizer.close()
